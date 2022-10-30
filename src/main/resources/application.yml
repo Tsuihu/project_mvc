@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydatas?serverTimezone=UTC&userUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath*:mappers/*xml
+#  包名简写
+  type-aliases-package: com.example.project_mvc.pojo
+#  查看执行数据库日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

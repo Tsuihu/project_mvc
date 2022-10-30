@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project_mvc.dao.UserDao">
+    <select id="login" resultType="com.example.project_mvc.pojo.User">
+        select * from user where loginId = #{loginId} and password = #{password}
+    </select>
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user(name,loginId,password,birthday) values(#{name},#{loginId},#{password},#{birthday})
+    </insert>
+    <select id="checkUserRepeat" resultType="int">
+        select count(0) from user where loginId = #{loginId}
+    </select>
+
+</mapper>

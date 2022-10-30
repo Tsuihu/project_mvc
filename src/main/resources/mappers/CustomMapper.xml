@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project_mvc.dao.CustomDao">
+    <!--  分页查询：返回所有数据  -->
+    <select id="getPagedCustom" resultType="com.example.project_mvc.pojo.Custom">
+        select * from custom limit #{rowBegin},#{pageSize}
+    </select>
+    <!--  分页查询：返回总数量  -->
+    <select id="getPagedCustomCount" resultType="int">
+        select count(0) from custom
+    </select>
+    <!--  插入数据  -->
+    <insert id="insertCustom" useGeneratedKeys="true" keyProperty="customId">
+        insert into custom(customName,contact,address,tel)
+            values(#{customName},#{contact},#{address},#{tel})
+    </insert>
+    <!--  修改数据  -->
+    <update id="updateCustom">
+        UPDATE custom
+            SET customName=#{customName},contact=#{contact},address=#{address},tel=#{tel}
+            WHERE customId=#{customId}
+    </update>
+    <!--  删除数据  -->
+    <delete id="deleteCustom">
+        delete from custom where customId=#{customId}
+    </delete>
+    <!--  根据id查询一条数据  -->
+    <select id="getCustomById" resultType="com.example.project_mvc.pojo.Custom">
+        select * from custom where customId=#{customId}
+    </select>
+    <!--  根据customName 查询相关数据  -->
+    <select id="getCustomListByName" resultType="com.example.project_mvc.pojo.Custom">
+        select * from custom where customName like concat('%',#{customName},'%')
+    </select>
+</mapper>

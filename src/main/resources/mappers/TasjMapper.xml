@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.project_mvc.dao.TaskDao">
+    <select id="getAllTask" resultType="com.example.project_mvc.pojo.Task">
+        select * from task
+    </select>
+    <update id="updateTask">
+        UPDATE task
+            SET taskName=#{taskName},taskStatus=#{taskStatus},createTime=#{createTime}
+            WHERE taskId=#{taskId}
+    </update>
+</mapper>
